@@ -24,10 +24,12 @@ db.sequelizeConnection.sync()
     console.log('Failed to sync db: ', err.message)
 });
 
-app.get("/f", (req, res) => {
-    res.json({
-        message: "This is example of ExpressJS"
-    });
+// Import biodata controller
+const biodataController = require('./app/controllers/biodata.controller.js');
+
+// Create biodata route
+app.post("/", (req, res) => {
+    biodataController.create(req, res);
 });
 
 const PORT = process.env.PORT || 3000;
