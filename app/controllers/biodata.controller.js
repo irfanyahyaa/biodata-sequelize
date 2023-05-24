@@ -32,3 +32,32 @@ exports.create = (req, res) => {
         });
     });
 };
+
+// Read Biodata method
+exports.findAll = (req, res) => {
+    Biodata.findAll()
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Error while retrieving biodatas!"
+        });
+    });
+};
+
+exports.findOne = (req, res) => {
+    Biodata.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(data => {
+        res.send(data);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: err.message || "Error while finding biodata!"
+        });
+    });
+};

@@ -32,6 +32,15 @@ app.post("/", (req, res) => {
     biodataController.create(req, res);
 });
 
+// Read biodata route
+app.get("/", (req,res) => {
+    biodataController.findAll(req, res);
+});
+
+app.get("/:id", (req,res) => {
+    biodataController.findOne(req, res);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen (PORT, () => {
     console.log(`Server is running on port ${PORT}.`)
