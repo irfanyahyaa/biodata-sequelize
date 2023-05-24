@@ -61,3 +61,42 @@ exports.findOne = (req, res) => {
         });
     });
 };
+
+// Update Biodata method
+exports.update = (req, res) => {
+    Biodata.update(req.body,{
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(data => {
+        res.send({
+            message: "Success update biodata with id = " + req.params.id + "!",
+        });
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:"Error occured while inserting biodata!"
+        });
+    });
+};
+
+
+// Delete Biodata method
+exports.delete = (req, res) => {
+    Biodata.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(
+        res.send({
+            message:"Success delete biodata with id = " + req.params.id + "!",
+        })
+    )
+    .catch(err => {
+        res.status(500).send({
+            message:"Could not delete biodata with id = " + req.params.id
+        })
+    });
+};

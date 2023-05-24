@@ -41,6 +41,16 @@ app.get("/:id", (req,res) => {
     biodataController.findOne(req, res);
 });
 
+// Update biodata route
+app.put("/:id", (req, res) => {
+    biodataController.update(req, res);
+});
+
+// Delete biodata route
+app.post("/:id", (req,res) => {
+    biodataController.delete(req, res);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen (PORT, () => {
     console.log(`Server is running on port ${PORT}.`)
